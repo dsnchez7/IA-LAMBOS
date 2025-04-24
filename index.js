@@ -28,3 +28,4 @@ const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(`Servidor escuchando en puerto ${PORT}`);
 });
+// Forzado de redeploy - sin cambios funcionales
