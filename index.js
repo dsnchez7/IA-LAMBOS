@@ -8,7 +8,11 @@ app.get('/screenshot', async (req, res) => {
   const url = req.query.url;
   if (!url) return res.status(400).send('Missing TradingView URL.');
 
-  const browser = await puppeteer.launch({ headless: true });
+  const browser = await puppeteer.launch({
+    args: ['--no-sandbox'],
+    headless: 'new' // Usar nuevo modo compatible con entornos serverless
+  });
+
   const page = await browser.newPage();
 
   await page.goto(url, { waitUntil: 'networkidle2' });
